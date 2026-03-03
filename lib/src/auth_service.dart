@@ -1,12 +1,13 @@
 import 'package:gd_http_client/gd_http_client.dart';
 import 'models/auth_result.dart';
 import 'models/login_credentials.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 /// Authentication service for email/password and social login
-abstract class AuthService {
+abstract class IAuthService {
   final IHttpClient httpClient;
 
-  AuthService(this.httpClient);
+  IAuthService(this.httpClient);
 
   /// Login with email and password
   Future<AuthResult> loginWithEmail(LoginCredentials credentials);
@@ -22,8 +23,10 @@ abstract class AuthService {
 }
 
 /// Default implementation of AuthService
-class DefaultAuthService extends AuthService {
+class DefaultAuthService extends IAuthService {
   final String baseUrl;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? user = null;
 
   DefaultAuthService(super.httpClient, {required this.baseUrl});
 
