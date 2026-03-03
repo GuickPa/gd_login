@@ -1,0 +1,19 @@
+name: gd_login
+description: Authentication library for Flutter with email/password and social login
+version: 0.0.1
+homepage: 
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  gd_http_client:
+    path: ../http_client
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
